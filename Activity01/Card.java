@@ -11,17 +11,17 @@ public class Card {
      * String value that holds the suit of the card
      */
     private String suit;
-
+    private String[] cardSuit = {"Spades", "Diamonds", "Clubs", "Hearts"};
     /**
      * String value that holds the rank of the card
      */
     private String rank;
-
-    /**
+    private String[] cardRank = {"Ace","2", "3", "4", "5", "6", "7", "8",
+                                        "9", "10", "Jack", "Queen", "King"};/**
      * int value that holds the point value.
      */
     private int pointValue;
-
+    private int[] cardPointValue = {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
 
    /**
      * Creates a new <code>Card</code> instance.
@@ -33,8 +33,11 @@ public class Card {
      * @param cardPointValue an <code>int</code> value
      *                  containing the point value of the card
      */
-    public Card(String cardRank, String cardSuit, int cardPointValue) {
-
+    public Card(String cardRank, String cardSuit, int cardPointValue) 
+    {
+        rank = cardRank;
+        suit = cardSuit;
+        pointValue = cardPointValue;
     }
 
 
@@ -42,24 +45,27 @@ public class Card {
      * Accesses this <code>Card's</code> suit.
      * @return this <code>Card's</code> suit.
      */
-    public String suit() {
-
+    public String suit() 
+    {
+        return suit;
     }
 
     /**
      * Accesses this <code>Card's</code> rank.
      * @return this <code>Card's</code> rank.
      */
-    public String rank() {
-
+    public String rank() 
+    {
+        return rank;
     }
 
    /**
      * Accesses this <code>Card's</code> point value.
      * @return this <code>Card's</code> point value.
      */
-    public int pointValue() {
-
+    public int pointValue() 
+    {
+        return pointValue;
     }
 
     /** Compare this card with the argument.
@@ -68,8 +74,13 @@ public class Card {
      *              are equal to those of the argument;
      *         false otherwise.
      */
-    public boolean matches(Card otherCard) {
-
+    public boolean matches(Card otherCard) 
+    {
+        if (this.cardSuit == otherCard.cardSuit &&
+            this.cardRank == otherCard.cardRank)
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -83,7 +94,9 @@ public class Card {
      *         and point value of the card.
      */
     @Override
-    public String toString() {
-
+    public String toString() 
+    {
+        return (cardRank + " of " + cardSuit + " (point value = "
+                + cardPointValue + ")");
     }
 }
